@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 
 public class LeaugeInvaders {
 
+	GamePanel panel;
+	
 	JFrame frame;
 
 	int width = 500;
@@ -14,6 +16,7 @@ public class LeaugeInvaders {
 		LeaugeInvaders invade = new LeaugeInvaders();
 		
 	
+		
 }
 
  
@@ -21,7 +24,15 @@ public class LeaugeInvaders {
 	
 		frame = new JFrame();
 		
+		panel = new GamePanel();
+		
+		frame.add(panel);
+		
+		frame.addKeyListener(panel);
+		
 		setup();
+		
+		
 	
 }
 	
@@ -33,6 +44,8 @@ public class LeaugeInvaders {
 		frame.setSize(500, 800);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		panel.StartGame();
 		
 	}
 
