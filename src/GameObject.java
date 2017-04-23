@@ -9,7 +9,7 @@ public class GameObject {
 	
 	void update(){
 		
-	y -= 1;
+	
 	
 		
 		
@@ -17,7 +17,7 @@ public class GameObject {
 	
 	void draw(Graphics g){
 		
-		g.fillRect(x, y, 100, 100);
+		
 		
 	}
 	

@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +12,8 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
+	Font bigFont;
+	Font smallFont;
 	
 	
 	Timer timer;
@@ -24,11 +28,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	public void paintComponent(Graphics g){
 		
 		if(currentState == MENU_STATE){
-			updateMenuState(g);
+			drawMenuState(g);
 		}else if(currentState == GAME_STATE){
-			updateGameState(g);
+			drawGameState(g);
 		}else if(currentState == END_STATE){
-			updateEndState(g);
+			drawEndState(g);
 		}
 
 		
@@ -40,7 +44,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 		timer = new Timer(1000/60, this);
 		
-		
+		bigFont = new Font("Arial", Font.PLAIN, 48);
+		smallFont = new Font("Arial", Font.PLAIN, 22);
 		
 	}
 	
@@ -55,26 +60,59 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		timer.start();
 	}
 	
-	void updateMenuState(Graphics g){
+	void updateMenuState(){
 		
 		
 	}
 	
-	void updateGameState(Graphics g){
+	void updateGameState(){
 		
 		
 	}
 	
-	void updateEndState(Graphics g){
+	void updateEndState(){
 		
 		
 	}
 
-	void drawMenuState(){
+	void drawMenuState(Graphics g){
 		
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, LeaugeInvaders.width, LeaugeInvaders.height);
+		
+		g.setColor(Color.ORANGE); 
+		g.setFont(bigFont);
+		g.drawString("Leauge Invaders", 75, 200);
+		
+		//g.setColor(Color.ORANGE);
+		g.setFont(smallFont);
+		g.drawString("Press Enter To Begin", 150, 650);
 	}
+	
+	void drawGameState(Graphics g){
+		
+		g.setColor(Color.BLACK);
+		g.fillRect(0,0, LeaugeInvaders.width, LeaugeInvaders.height);
+		
+		
+	}
+	
+	void drawEndState(Graphics g){
+		
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, LeaugeInvaders.width, LeaugeInvaders.height);
+		
+		g.setColor(Color.BLACK);
+		g.setFont(bigFont);
+		g.drawString("You're Bad", 125, 200);
+		
+		g.setFont(smallFont);
+		g.drawString("Press __ To Try Again", 150, 650);
+		
+		
+		
+	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -83,11 +121,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		repaint();
 		
 		if(currentState == MENU_STATE){
-			updateMenuState(getGraphics());
+			updateMenuState();
 		}else if(currentState == GAME_STATE){
-			updateGameState(getGraphics());
+			updateGameState();
 		}else if(currentState == END_STATE){
-			updateEndState(getGraphics());
+			updateEndState();
 		}
 
 		
@@ -110,10 +148,18 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("Event");
-		
-		
+		if (e.getKeyCode() == KeyEvent.VK_ENTER){
+			
+			currentState +=1;
+				
+			}
+		if(currentState > END_STATE){
+			currentState = MENU_STATE;
+		}
 	}
+		
+		
+	
 
 
 

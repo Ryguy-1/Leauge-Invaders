@@ -8,8 +8,8 @@ public class LeaugeInvaders {
 	
 	JFrame frame;
 
-	int width = 500;
-	int height = 800;
+	static int width = 500;
+	static int height = 800;
 	
 	public static void main(String[] args) {
 	
