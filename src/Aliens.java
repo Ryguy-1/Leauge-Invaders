@@ -1,38 +1,32 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class RocketShip extends GameObject {
+public class Aliens extends GameObject {
 
-	
+	int x;
+	int y;
+	int width;
+	int height;
 	int speed;
 	
 	
 	
 	
 	
-	
-	
-	RocketShip(){
-		
-		
-		
-	}
-	
-	public RocketShip(int x, int y, int width, int height) {
+	public Aliens(int x, int y, int width, int height){
 		super();
 		this.x=x;
 		this.y=y;
 		this.width=width;
 		this.height=height;
-		this.speed = 8;
-		// TODO Auto-generated constructor stub
+		this.speed=10;
+		
+		
 	}
 	
-	
-
 void draw(Graphics g){
 		
-		g.setColor(Color.BLUE);
+		g.setColor(Color.YELLOW);
 		g.fillRect(x, y, width, height);
 		
 		
@@ -42,19 +36,10 @@ void draw(Graphics g){
 		
 		super.update();
 		
+		y += speed;
+		
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

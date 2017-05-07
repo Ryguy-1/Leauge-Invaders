@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class GamePanel extends JPanel implements ActionListener, KeyListener {
+public class GamePanel extends JPanel implements ActionListener, KeyListener  {
 
 	Font bigFont;
 	Font smallFont;
@@ -94,6 +94,21 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 				ship.x += ship.speed;
 
 			}
+			if (keyPressed == KeyEvent.VK_SPACE){
+				
+				manager.addObject(new Projectile(ship.x + 20,ship.y, 10,10));
+				
+			}
+			
+			manager.manageEnemies();
+			manager.checkCollision();
+			
+			
+			if (ship.isAlive == false){
+				
+				currentState = END_STATE;
+				
+			}
 			
 		}
 		
@@ -167,7 +182,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 
-		System.out.println("Typed");
+		
 
 	}
 
@@ -192,7 +207,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 
-		System.out.println("Event2");
+		
 		
 		keys.remove((Integer) e.getKeyCode());
 		
