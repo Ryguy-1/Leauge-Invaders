@@ -1,12 +1,16 @@
 import java.awt.Color;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -14,7 +18,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener  {
 
 	Font bigFont;
 	Font smallFont;
-
+	public static BufferedImage alienImg;
+	public static BufferedImage rocketImg;
+	public static BufferedImage bulletImg;
 	ArrayList<Integer> keys = new ArrayList<>();
 	
 	
@@ -50,6 +56,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener  {
 		smallFont = new Font("Arial", Font.PLAIN, 22);
 
 		manager.addObject(ship);
+		
+		try {
+			alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
+			rocketImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
+			bulletImg = ImageIO.read(this.getClass().getResourceAsStream("bullet.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
 	}
 
@@ -94,21 +110,21 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener  {
 				ship.x += ship.speed;
 
 			}
-			if (keyPressed == KeyEvent.VK_SPACE){
-				
-				manager.addObject(new Projectile(ship.x + 20,ship.y, 10,10));
-				
-			}
 			
 			manager.manageEnemies();
 			manager.checkCollision();
-			
+			manager.getScore();
 			
 			if (ship.isAlive == false){
 				
 				currentState = END_STATE;
+				ship=new RocketShip(250, 700, 50, 50);
+				manager.reset();
+				
 				
 			}
+			manager.addObject(ship);
+			
 			
 		}
 		
@@ -189,8 +205,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener  {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
+		
 		if (!keys.contains(e.getKeyCode()))
 		keys.add(e.getKeyCode());
+		
+		if (e.getKeyCode() == KeyEvent.VK_SPACE){
+			
+			manager.addObject(new Projectile(ship.x + 20,ship.y, 10,10));
+			
+		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 

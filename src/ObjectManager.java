@@ -57,7 +57,6 @@ public class ObjectManager {
 				GameObject o2 = objects.get(j);
 				
 				if(o1.collisionBox.intersects(o2.collisionBox)){
-					System.out.println("HI");
 					if((o1 instanceof Aliens && o2 instanceof Projectile) ||
 					   (o2 instanceof Aliens && o1 instanceof Projectile)){
 						score++;

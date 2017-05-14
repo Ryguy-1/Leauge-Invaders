@@ -7,14 +7,17 @@ public class GameObject {
 	
 	boolean isAlive = true;
 	
-	int x = 200;
-	int y = 700;
+	int x;
+	int y;
 	int width;
 	int height;
 	
 	
-	public GameObject(){
-		
+	public GameObject(int x, int y, int width, int height){
+		this.x=x;
+		this.y=y;
+		this.width=width;
+		this.height=height;
 		collisionBox = new Rectangle(x, y, width, height);
 		
 	}

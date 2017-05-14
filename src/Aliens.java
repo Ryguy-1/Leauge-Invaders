@@ -3,31 +3,18 @@ import java.awt.Graphics;
 
 public class Aliens extends GameObject {
 
-	int x;
-	int y;
-	int width;
-	int height;
+
 	int speed;
 	
-	
-	
-	
-	
 	public Aliens(int x, int y, int width, int height){
-		super();
-		this.x=x;
-		this.y=y;
-		this.width=width;
-		this.height=height;
-		this.speed=10;
-		
+		super(x, y, width, height);
+		this.speed=8;
 		
 	}
 	
 void draw(Graphics g){
 		
-		g.setColor(Color.YELLOW);
-		g.fillRect(x, y, width, height);
+		g.drawImage(GamePanel.alienImg, x, y, width, height, null);
 		
 		
 	}

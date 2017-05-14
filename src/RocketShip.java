@@ -9,21 +9,10 @@ public class RocketShip extends GameObject {
 	
 	
 	
-	
-	
-	
-	RocketShip(){
-		
-		
-		
-	}
-	
+
 	public RocketShip(int x, int y, int width, int height) {
-		super();
-		this.x=x;
-		this.y=y;
-		this.width=width;
-		this.height=height;
+		super(x, y, width, height);
+
 		this.speed = 8;
 		// TODO Auto-generated constructor stub
 	}
@@ -32,8 +21,7 @@ public class RocketShip extends GameObject {
 
 void draw(Graphics g){
 		
-		g.setColor(Color.BLUE);
-		g.fillRect(x, y, width, height);
+		g.drawImage(GamePanel.rocketImg, x, y, width, height, null); 
 		
 		
 	}
