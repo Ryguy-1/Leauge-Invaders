@@ -175,6 +175,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener  {
 
 		g.setFont(smallFont);
 		g.drawString("Press __ To Try Again", 150, 650);
+		
+		manager.setScore(0);
 
 	}
 

@@ -49,7 +49,8 @@ public class ObjectManager {
 			enemyTimer = System.currentTimeMillis();
 		}
 	}
-
+		
+	
 	public void checkCollision() {
 		for (int i = 0; i < objects.size(); i++) {
 			for (int j = i + 1; j < objects.size(); j++) {
